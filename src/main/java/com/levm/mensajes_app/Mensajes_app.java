@@ -5,7 +5,7 @@
 
 package com.levm.mensajes_app;
 
-import java.sql.Connection;
+import java.util.Scanner;
 
 /**
  *
@@ -14,14 +14,37 @@ import java.sql.Connection;
 public class Mensajes_app {
 
     public static void main(String[] args) {
-        Conexion con = new Conexion();
-        try(Connection cnx = con.getConnection())
-        {
+        Scanner sc = new Scanner(System.in);
+        
+        int opcion=0;
+        do{
+            System.out.println("\t-------------------------------");
+            System.out.println("Aplicacion de mensajes");
+            System.out.println("1. Crear mensaje");
+            System.out.println("2. Eliminar mensaje");
+            System.out.println("3. Leer mensajes");
+            System.out.println("4. Modificar mensaje");
+            System.out.println("5. Salir");
             
-        }
-        catch(Exception e){
-            System.out.println(e);
+            opcion= sc.nextInt();
+            switch(opcion){
+                case 1:
+                    MensajeService.crearMensaje();
+                    break;
+                case 2:
+                    MensajeService.borrarMensaje(opcion);
+                    break;
+                case 3:
+                    MensajeService.leerMensajes();
+                    break;
+                case 4:
+                    MensajeService.modificarMensaje();
+                    break;
+               default:
+                   break;
+            }
             
-        }
+        }while(opcion != 5);
+        
     }
 }
