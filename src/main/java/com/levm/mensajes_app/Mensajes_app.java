@@ -35,7 +35,9 @@ public class Mensajes_app {
                     MensajeService.crearMensaje();
                     break;
                 case 2:
-                    MensajeService.borrarMensaje(opcion);
+                    System.out.println("Ingrese el ID del mensaje que desea eliminar");
+                    int _idMensaje = sc.nextInt();
+                    MensajeService.borrarMensaje(_idMensaje);
                     break;
                 case 3:
                     List<Mensaje> msjList=MensajeService.leerMensajes();
@@ -46,7 +48,14 @@ public class Mensajes_app {
                     }
                     break;
                 case 4:
-                    MensajeService.modificarMensaje();
+                    Mensaje msjUpdate= new Mensaje();
+                    System.out.println("Ingresa el id del Mensaje que quieres actualizar");
+                    int idMensaje=sc.nextInt();
+                    msjUpdate.setIdMensaje(idMensaje);
+                    System.out.println("Ingresa el nuevo mensaje");
+                    String newMsj=sc.nextLine();
+                    msjUpdate.setMensaje(newMsj);
+                    MensajeService.modificarMensaje(msjUpdate);
                     break;
                default:
                    break;

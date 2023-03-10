@@ -42,10 +42,10 @@ public class MensajeService {
         return ml;
     }
     public static void borrarMensaje(int idMensaje){
-        
+        MensajesDAO.borrarMensaje(idMensaje);
     }
-    public static void modificarMensaje(){
-        
+    public static void modificarMensaje(Mensaje mensaje){
+        MensajesDAO.modificarMensaje(mensaje);
     }
     
 }
