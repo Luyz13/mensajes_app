@@ -5,6 +5,9 @@
 
 package com.levm.mensajes_app;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -13,7 +16,7 @@ import java.util.Scanner;
  */
 public class Mensajes_app {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         Scanner sc = new Scanner(System.in);
         
         int opcion=0;
@@ -35,7 +38,12 @@ public class Mensajes_app {
                     MensajeService.borrarMensaje(opcion);
                     break;
                 case 3:
-                    MensajeService.leerMensajes();
+                    List<Mensaje> msjList=MensajeService.leerMensajes();
+                    for(Mensaje m: msjList){
+                        System.out.println("ID:" +m.getIdMensaje());
+                        System.out.println("Mensaje:" +m.getMensaje());
+                        System.out.println("Autor:"+m.getAutorMensaje());
+                    }
                     break;
                 case 4:
                     MensajeService.modificarMensaje();

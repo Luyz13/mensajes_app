@@ -24,6 +24,11 @@ public class Mensaje {
         this.autorMensaje = autorMensaje;
         this.fechaMensaje = fechaMensaje;
     }
+      public Mensaje(int idMensaje, String mensaje, String autorMensaje) {
+        this.idMensaje = idMensaje;
+        this.mensaje = mensaje;
+        this.autorMensaje = autorMensaje;    
+    }
     public Mensaje( String mensaje, String autorMensaje) {
         this.mensaje = mensaje;
         this.autorMensaje = autorMensaje;

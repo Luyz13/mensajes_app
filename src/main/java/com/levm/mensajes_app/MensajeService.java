@@ -4,6 +4,10 @@
  */
 package com.levm.mensajes_app;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -24,8 +28,18 @@ public class MensajeService {
         MensajesDAO.crearMensaje(mensaje);
         
     };
-    public static void leerMensajes(){
-        
+    public static List<Mensaje> leerMensajes() throws SQLException{
+        List<Mensaje> ml = new ArrayList<Mensaje>();
+        ResultSet rsMensajes=MensajesDAO.leerMensajes();
+        while(rsMensajes.next()){
+            Mensaje newMensaje= new Mensaje(
+                    rsMensajes.getInt("id_mensaje"),
+                    rsMensajes.getString("mensaje"),
+                    rsMensajes.getString("autor_mensaje")
+            );
+            ml.add(newMensaje); 
+        }
+        return ml;
     }
     public static void borrarMensaje(int idMensaje){
         

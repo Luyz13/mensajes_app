@@ -6,6 +6,7 @@ package com.levm.mensajes_app;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 
@@ -35,9 +36,19 @@ public class MensajesDAO {
             System.out.println("Error:"+e);
             
         }  
-    };
-    public static void leerMensajes(){
-        
+    }
+    public static ResultSet leerMensajes(){
+        Conexion conexion = Conexion.getInstance();
+        Connection objetoConexion = conexion.doConnetion();
+        PreparedStatement ps = null;
+        try{
+            String query = "SELECT * FROM Mensajes";
+            ps=objetoConexion.prepareStatement(query);
+            return ps.executeQuery();
+            
+        }catch(SQLException e){
+          throw new RuntimeException(e);
+        }
     }
     public static void borrarMensaje(int idMensaje){
         
